@@ -1,5 +1,5 @@
 if game.Placeid 9397663086 then
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
 local Window = OrionLib:MakeWindow({Name = "Ky Hub [UPD 1!] Ninja Training Simulator 💥", HidePremium = true, IntroText = "Ky Hub", SaveConfig = true, ConfigFolder = "Ky"})
 
 local Events = game:GetService("ReplicatedStorage").Events
