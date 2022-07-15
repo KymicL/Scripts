@@ -1,5 +1,20 @@
-if game.Placeid 9397663086 then
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "Key System", HidePremium = false, SaveConfig = true, IntroEnabled = false})
+
+OrionLib:MakeNotification({
+    Name = "Logged In!!!!",
+    Content = "Your in "..Player.Name..".",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+getgenv().Key = "dawn"
+getgenv().KeyInput = "string"
+
+function  MakeScriptHub()
+    game:GetService("CoreGui").Orion:Destroy()
+    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Ky Hub [UPD 1!] Ninja Training Simulator 💥", HidePremium = true, IntroText = "Ky Hub", SaveConfig = true, ConfigFolder = "Ky"})
 
 local Events = game:GetService("ReplicatedStorage").Events
@@ -14,7 +29,7 @@ getgenv().SelectEgg = "Basic"
 getgenv().EggAmount = "Single"
 getgenv().CraftAll = "Craft All"
 getgenv().Craft = true
-
+getgenv().AntiAfk = true
 
 
 --Functions
@@ -29,11 +44,14 @@ end
  
 
 function AntiAfk()
-    local VirtualUser = game:service'VirtualUser'
-    game:service('Players').LocalPlayer.Idled:connect(function()
-    VirtualUser:CaptureController()
-    VirtualUser:ClickButton2(Vector2.new())
-    end)
+    if getgenv().AntiAfk == true then
+        local VirtualUser = game:service'VirtualUser'
+        game:service('Players').LocalPlayer.Idled:connect(function()
+        VirtualUser:CaptureController()
+        VirtualUser:ClickButton2(Vector2.new())
+        wait()
+        end)
+    end
 end
 
 
@@ -248,11 +266,65 @@ e:AddSlider({
     end})
 
     e:AddButton({Name = "Anti Afk",Callback = function()
+if getgenv().AntiAfk then
         AntiAfk()
+      end
     end})
 
 
 
+
+end
+
+function CorrectKeyNotification()
+   OrionLib:MakeNotification({
+        Name = "Correct Key",
+        Content = "You have entered the Correct Key",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+
+function InCorrectKeyNotification()
+    OrionLib:MakeNotification({
+        Name = "InCorrect Key",
+        Content = "You have entered the InCorrect Key",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+end
+
+
+
+
+local Tab = Window:MakeTab({
+	Name = "Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+
+Tab:AddTextbox({
+	Name = "Enter Key",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+        getgenv().KeyInput = Value
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Check Key",
+	Callback = function()
+       if getgenv().KeyInput == getgenv().Key then
+        MakeScriptHub()
+        CorrectKeyNotification()
+       else
+        InCorrectKeyNotification()
+      end
+  	end    
+})
 OrionLib:Init()
 OrionLib:Destroy()
-end	
