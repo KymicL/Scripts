@@ -1,4 +1,4 @@
-local OrionLib = load(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/shlexware/Orion/main/source")))()
 local Window = OrionLib:MakeWindow({Name = "Key System", HidePremium = false, SaveConfig = true, IntroEnabled = false})
 
 
@@ -7,7 +7,7 @@ local Window = OrionLib:MakeWindow({Name = "Key System", HidePremium = false, Sa
 getgenv().Key = "-KaPdSgVC*F-JaNd9z$C&F)Js6v9y$B&"
 getgenv().KeyInput = "string"
 function  MakeScriptHub()
-    local OrionLib = load(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = load(game:HttpGet(("https://raw.githubusercontent.com/shlexware/Orion/main/source")))()
 
 local Window = OrionLib:MakeWindow({Name = "Crazy Hub [UPD 1!] Ninja Training Simulator 💥", HidePremium = true, IntroText = "Crazy Hub", SaveConfig = true, ConfigFolder = "Ky"})
 
